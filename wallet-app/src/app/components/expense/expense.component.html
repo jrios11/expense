@@ -1,0 +1,15 @@
+<a class="navbar-brand">Expenses</a>
+<hr>
+
+<div class="my-2">
+  <div class="btn-group w-100" role="group" aria-label="Basic example">
+    <a type="button" class="btn btn-secondary">Expense</a>
+    <button type="button" class="btn btn-secondary" [ngClass]="{ active: addExpenseOrSetBudget === 'Add Expense' }"
+      (click)="onClickaddExpense()">Add Expense</button>
+    <button type="button" class="btn btn-secondary" [ngClass]="{ active: addExpenseOrSetBudget === 'Set Budget' }"
+      (click)="onClickSetBudget()">Set Budget</button>
+  </div>
+</div>
+
+<app-add-expense *ngIf="addExpenseOrSetBudget === 'Add Expense'"></app-add-expense>
+<app-set-budget *ngIf="addExpenseOrSetBudget === 'Set Budget'"></app-set-budget>

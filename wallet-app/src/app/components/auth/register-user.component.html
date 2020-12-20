@@ -1,0 +1,86 @@
+<div class="container">
+    <h2 class="text-center">LogIn/SignUp</h2>
+    <div class="row">
+        <div class="col-6">
+            <h3 class="text-center">Sign In</h3>
+            <form #signinForm="ngForm" (ngSubmit)="onSignInSubmit(signinForm.value)">
+                <div class="form-group">
+                    <input placeholder="Email" required name="email" [pattern]="emailPattern" ngModel #email="ngModel">
+                    <div class="alert alert-danger" role="alert" *ngIf="email.errors?.required">Email is required</div>
+                    <div class="alert alert-danger" role="alert" *ngIf="email.errors?.pattern">Not a valid email id
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input placeholder="Password" type="password" required minlength="6" name="password" ngModel
+                        #password="ngModel">
+                    <div class="alert alert-danger" role="alert" *ngIf="password.errors && password.errors.required">
+                        Password is required
+                    </div>
+                    <div class="alert alert-danger" role="alert" *ngIf="password.errors && password.errors.minlength">
+                        Password must be of length 6
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-block" type="submit" [disabled]="!signinForm.form.valid">
+                    Sign In
+                </button>
+            </form>
+
+            <div *ngIf="signInError" class="alert alert-danger">
+                <strong>{{signInErrorMsg}}</strong>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <form #signUpForm="ngForm" (ngSubmit)="onSignUpSubmit(signUpForm.value)">
+                <div class="form-group">
+                    <input placeholder="User Name" required name="username" [pattern]="unamePattern" ngModel
+                        #username="ngModel">
+                    <div class="alert alert-danger" role="alert" *ngIf="username.errors?.required">
+                        Username is required
+                    </div>
+                    <div class="alert alert-danger" role="alert" *ngIf="username.errors?.pattern">
+                        Username is not acc. to required pattern
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input placeholder="Email" required name="email" [pattern]="emailPattern" ngModel
+                        #email="ngModel">
+                    <div class="alert alert-danger" role="alert" *ngIf="email.errors?.required">Email is
+                        required</div>
+                    <div class="alert alert-danger" role="alert" *ngIf="email.errors?.pattern">Not a valid
+                        email id</div>
+                </div>
+                <div class="form-group">
+                    <input placeholder="Password" type="password" required minlength="6" name="password" ngModel
+                        #password="ngModel">
+                    <div class="alert alert-danger" role="alert"
+                        *ngIf="password.errors && password.errors.required">
+                        Password is required
+                    </div>
+                    <div class="alert alert-danger" role="alert"
+                        *ngIf="password.errors && password.errors.minlength">
+                        Password must be of length 6
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <input placeholder="Password" type="password" required minlength="6" name="repassword"
+                        ngModel #repassword="ngModel">
+                    <div class="alert alert-danger" role="alert"
+                        *ngIf="repassword.errors && repassword.errors.required">
+                        Re-Enter Password is required
+                    </div>
+                </div>
+                <button class="btb btn-primary btn-block" class="login-button" type="submit"
+                    [disabled]="!signUpForm.form.valid">
+                    Sign Up
+                </button>
+            </form>
+
+            <div *ngIf="signUpError" class="alert alert-danger">
+                <strong>{{signUpErrorMsg}}</strong>
+            </div>
+        </div>
+    </div>
+</div>

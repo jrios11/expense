@@ -1,0 +1,17 @@
+<a class="navbar-brand">Dashboard</a>
+<hr>
+
+<div class="my-2">
+  <div class="btn-group w-100" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-secondary" [ngClass]="{ active: dailyMonthlyYearly === 'Daily' }"
+      (click)="onClickDailyExpense()">Daily</button>
+    <button type="button" class="btn btn-secondary" [ngClass]="{ active: dailyMonthlyYearly === 'Monthly' }"
+      (click)="onClickSetBudget()">Monthly</button>
+    <button type="button" class="btn btn-secondary" [ngClass]="{ active: dailyMonthlyYearly === 'Yearly' }"
+      (click)="onClickSetBudget()">Yearly</button>
+  </div>
+</div>
+
+<app-daily *ngIf="dailyMonthlyYearly === 'Daily'"></app-daily>
+<app-monthly *ngIf="dailyMonthlyYearly === 'Monthly'"></app-monthly>
+<app-yearly *ngIf="dailyMonthlyYearly === 'Yearly'"></app-yearly>
